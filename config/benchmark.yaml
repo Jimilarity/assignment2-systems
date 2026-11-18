@@ -1,0 +1,22 @@
+# Relative to this configuration file, not the working directory.
+model_sizes: model_sizes.yaml
+model_size: small
+
+# Combined with the dimensions selected above; explicit values override the table.
+model:
+  vocab_size: 10000
+  context_length: 512
+  rope_theta: 10000.0
+
+optimizer:
+  lr: 0.001
+
+benchmark:
+  mode: train  # forward | forward-backward | train
+  batch_size: 4
+  warmup_steps: 5
+  measurement_steps: 10
+  device: cuda
+  dtype: float32  # Direct model dtype, not autocast.
+  seed: 0
+  output: output/benchmark/result.json  # Relative to the working directory; null disables saving.
